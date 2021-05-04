@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOLZAPP</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="mainContainer">
+            <div class="layoutContainer">
+                <div class="users">
+                    <div class="userToolbar">
+                        <img src="img/avatar_2.jpg">
+                        <div class="emptySpace"></div>
+                        <i class="fa fa-circle-o-notch"></i>
+                        <i class="fa fa-comment"></i>
+                        <i class="fa fa-ellipsis-v"></i>                         
+                    </div>
+                    <div class="optMex">
+                        <div class="bell_box_container">
+                            <div class="bell_box">
+                                <i class="fa fa-bell-slash"></i>
+                            </div>
+                        </div>
+                        <div class="text_box">
+                            <span><strong>Ricevi notifiche di nuovi messaggi</strong></span>
+                            <a href="#"><small>Attiva notifiche desktop</small></a> 
+                        </div>   
+                    </div>
+                    <div class="search">
+                        <input type="text" class="inputStyle" placeholder="Cerca o inizia una nuova chat">
+                    </div>
+                    <div class="chatPrev">
+                        <div class="singleUser">
+                            <div class="userImg_box">
+                                <img src="img/avatar_io.jpg" alt="" class="userIcon">
+                            </div>
+                            <div class="userText_box">
+                                <p><strong>Sara</strong></p>
+                                <p>Non ci sono nuovi messaggi!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat">
+                    <div class="openChatToolbar">
+                        <div class="userToolbar">
+                            <img src="img/avatar_io.jpg">
+                            <div class="emptySpace"></div>
+                            <i class="fa fa-search"></i>
+                            <i class="fa fa-paperclip"></i>
+                            <i class="fa fa-ellipsis-v"></i>
+                        </div>         
+                    </div>
+                    <div class="chatSpace"></div>
+                    <div class="newMex">
+                        <i class="fa fa-smile-o"></i>
+                        <input type="text" placeholder="Scrivi un messaggio" class="writeMessage">
+                        <i class="fa fa-microphone"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script/data.js"></script>
+    <script src="script/app.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.mainContainer {
+    background-color: lightgreen;
+    width: 100%;
+    height: 100vh;
+}
+
+.layoutContainer {
+    display: flex;
+    margin: auto;
+    width: 95%;
+    height: 100vh;
+}
+
+/* CLASSI GENERICHE */
+
+.userIcon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.inputStyle {
+    width: 100%;
+    border-radius: 25px;
+    padding: 5px 0;
+    border: none;  
+}
+
+
+/* ZONA LISTA MESSAGGI*/
+.users {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    background-color: lightgrey;
+}
+
+.userToolbar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+}
+
+.userToolbar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.emptySpace {
+    flex-grow: 1;
+}
+
+.userToolbar i {
+    font-size: 15px;
+    padding: 0 10px;
+    color: #808080;
+}
+
+.optMex {
+    display: flex;
+    width: 100%;
+    background-color: lightskyblue;
+    padding: 10px;
+}
+
+.bell_box_container{
+    width: 50px;
+    margin-right: 15px;
+}
+
+.bell_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    flex-grow: 1;
+}
+
+.bell_box i {
+    color: lightskyblue;
+}
+
+.text_box {
+    display: flex;
+    flex-direction: column;
+}
+
+.text_box span {
+    font-size: 14px;
+}
+
+.search {
+    display: flex;
+    width: 100%;
+    padding: 10px;
+}
+
+.chatPrev {
+    flex-grow: 1;
+    background-color: white;
+    padding: 10px;
+}
+
+.singleUser {
+    display: flex;
+    align-items: center;
+}
+
+.userImg_box {
+    display: flex;
+    margin-right: 10px;
+    width: 20%;
+}
+
+.userText_box {
+    display: flex;
+    flex-direction: column;
+}
+
+.userText_box p {
+    padding: 2px 0;
+}
+
+
+
+/* ZONA CHAT APERTA*/
+.chat {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.openChatToolbar {
+    background-color: lightgray;
+    border-left: 1px solid #808080;
+}
+
+.chatSpace {
+    width: 100%;
+    background-image: url("../img/mine.jpg");
+    flex-grow: 1;
+}
+
+.newMex {
+    display: flex;
+    background-color: lightgray;
+}
+
+.writeMessage {
+    flex-grow: 1;
+}
