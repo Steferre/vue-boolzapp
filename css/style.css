@@ -26,9 +26,9 @@
 }
 
 .inputStyle {
-    width: 100%;
+    flex-grow: 1;
     border-radius: 25px;
-    padding: 5px 0;
+    padding: 5px 5px 5px 35px;
     border: none;  
 }
 
@@ -102,14 +102,23 @@
 
 .search {
     display: flex;
+    position: relative;
     width: 100%;
     padding: 10px;
+}
+
+.search i {
+    position: absolute;
+    top: 30%;
+    left: 20px;
+    color: #808080;
 }
 
 .chatPrev {
     flex-grow: 1;
     background-color: white;
     padding: 10px;
+    overflow: auto;
 }
 
 .singleUser {
@@ -132,8 +141,6 @@
     padding: 2px 0;
 }
 
-
-
 /* ZONA CHAT APERTA*/
 .chat {
     display: flex;
@@ -146,17 +153,107 @@
     border-left: 1px solid #808080;
 }
 
+.emptySpace {
+    padding-left: 10px;
+}
+
 .chatSpace {
     width: 100%;
     background-image: url("../img/mine.jpg");
     flex-grow: 1;
+    overflow: auto;
 }
 
 .newMex {
     display: flex;
+    align-items: center;
+    padding: 10px 0;
     background-color: lightgray;
+}
+
+.newMex i {
+    font-size: 20px;
+    color: #808080;
+    padding: 5px 15px;
+}
+
+.messageContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.mexSent {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 15px;
+}
+
+.userMex {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 5px 45px 5px 10px;
+    background-color: lightgreen;
+    border-radius: 10px;
+}
+
+.mexReceved {
+    display: flex;
+    padding: 10px 15px;   
+}
+
+.receverMex {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 5px 45px 5px 10px;
+    background-color: whitesmoke;
+    border-radius: 10px;    
+}
+
+.triangleGreen {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid lightgreen;
+    top: 0;
+    right: -9px;
+}
+
+.triangleWhite {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid whitesmoke;
+    top: 0;
+    left: -9px;
+}
+
+.hours {
+    font-size: 12px;
+    position: absolute;
+    bottom: -5px;
+    right: 5px;
+    width: 35px;
+    padding: 5px;
+    color: #808080; 
 }
 
 .writeMessage {
     flex-grow: 1;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 25px;
+}
+
+/* PER ELIMINARE IL BORDO NERO CHE SI ATTIVA QUANDO SI SELEZIONA UN INPUT */
+.writeMessage:active,
+.writeMessage:focus,
+.inputStyle:active,
+.inputStyle:focus {
+    outline: none;
 }
