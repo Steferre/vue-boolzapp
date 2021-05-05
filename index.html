@@ -37,11 +37,11 @@
                         </div>   
                     </div>
                     <div class="search">
-                        <input type="text" class="inputStyle" placeholder="Cerca o inizia una nuova chat">
+                        <input type="text" class="inputStyle" placeholder="Cerca o inizia una nuova chat" v-model="specificUser" @keyup="searchSpecificUser()">
                         <i class="fa fa-search"></i>
                     </div>
                     <div class="chatPrev">
-                        <div class="singleUser" v-for="(user, index) in userList" :key="index" @click="getActiveUser(user)"
+                        <div class="singleUser" v-for="(user, index) in searchSpecificUser()" :key="index" @click="getActiveUser(user)"
                             :class="{active: user.avatar === activeUser.avatar}">
                             <div class="userImg_box">
                                 <img :src="getUserImgPath(user)" alt="" class="userIcon">

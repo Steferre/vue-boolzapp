@@ -5,6 +5,7 @@ const app = new Vue({
         activeUser: {},
         userNewMsg: "",
         timer: null,
+        specificUser: "",
     },
     computed: {
         getActiveUserLastAccess() {
@@ -51,6 +52,9 @@ const app = new Vue({
         },
         autoAnswer() {
             return this.timer = setTimeout(this.createNewAnswer, 1000);
+        },
+        searchSpecificUser() {
+            return this.userList.filter((searchedUser) => searchedUser.name.toLowerCase().includes(this.specificUser));
         },
     },
     mounted() {
