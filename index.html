@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
 
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 </head>
@@ -40,12 +41,13 @@
                         <i class="fa fa-search"></i>
                     </div>
                     <div class="chatPrev">
-                        <div class="singleUser">
+                        <div class="singleUser" v-for="(user, index) in userList" :key="index" @click="getActiveUser(user)"
+                            :class="{active: user.avatar === activeUser.avatar}">
                             <div class="userImg_box">
-                                <img src="img/avatar_io.jpg" alt="" class="userIcon">
+                                <img :src="getUserImgPath(user)" alt="" class="userIcon">
                             </div>
                             <div class="userText_box">
-                                <p><strong>Sara</strong></p>
+                                <p><strong>{{ user.name }}</strong></p>
                                 <p>Non ci sono nuovi messaggi!</p>
                             </div>
                         </div>
@@ -54,10 +56,10 @@
                 <div class="chat">
                     <div class="openChatToolbar">
                         <div class="userToolbar">
-                            <img src="img/avatar_io.jpg">
+                            <img :src="getUserImgPath(activeUser)">
                             <div class="emptySpace">
-                                <p><strong>Sara</strong></p>
-                                <p><small>Ultimo accesso alle {{}}</small></p>
+                                <p><strong>{{ activeUser.name }}</strong></p>
+                                <p><small>Ultimo accesso alle {{ getActiveUserLastAccess }}</small></p>
                             </div>
                             <i class="fa fa-search"></i>
                             <i class="fa fa-paperclip"></i>
@@ -66,19 +68,16 @@
                     </div>
                     <div class="chatSpace">
                         <div class="messageContainer">
-                            <div class="mexSent">
-                                <div class="userMex">
-                                    Ci vediamo domani?
-                                    <div class="triangleGreen"></div>
-                                    <div class="hours">02:30</div>
+                            <div class="msg" v-for="(message, index) in activeUser.messages" :key="index"
+                            :class="{received: message.status === 'received',
+                                    sent: message.status === 'sent'}">
+                                {{ message.text }}
+                                <div class="triangle"
+                                    :class="{green: message.status === 'sent',
+                                             white: message.status === 'received'
+                                            }">
                                 </div>
-                            </div>
-                            <div class="mexReceved">
-                                <div class="receverMex">
-                                    Ok!
-                                    <div class="triangleWhite"></div>
-                                    <div class="hours">02:41</div>
-                                </div>
+                                <div class="hours">{{ getFormatDate(message.date) }}</div>
                             </div>
                         </div>
                     </div>

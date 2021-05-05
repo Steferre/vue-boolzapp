@@ -117,13 +117,19 @@
 .chatPrev {
     flex-grow: 1;
     background-color: white;
-    padding: 10px;
+    padding-top: 10px;
     overflow: auto;
 }
 
 .singleUser {
     display: flex;
     align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+.singleUser.active {
+    background-color: darkgray;
 }
 
 .userImg_box {
@@ -180,56 +186,45 @@
 .messageContainer {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
 }
 
-.mexSent {
-    display: flex;
-    justify-content: flex-end;
-    padding: 10px 15px;
-}
-
-.userMex {
-    display: flex;
-    flex-direction: column;
+.msg {
+    display: inline-block;
+    flex-grow: 0;
     position: relative;
     padding: 5px 45px 5px 10px;
-    background-color: lightgreen;
     border-radius: 10px;
+    margin: 10px 0;
 }
 
-.mexReceved {
-    display: flex;
-    padding: 10px 15px;   
+.msg.sent {
+    align-self: flex-end;
+    background-color: lightgreen;
+    margin-right: 15px;
 }
 
-.receverMex {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    padding: 5px 45px 5px 10px;
+.msg.received {
     background-color: whitesmoke;
-    border-radius: 10px;    
+    margin-left: 15px;   
 }
 
-.triangleGreen {
+.triangle {
     position: absolute;
     width: 0;
     height: 0;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-top: 10px solid lightgreen;
     top: 0;
+}
+
+.green {
+    border-top: 10px solid lightgreen;
     right: -9px;
 }
 
-.triangleWhite {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
+.white {
     border-top: 10px solid whitesmoke;
-    top: 0;
     left: -9px;
 }
 
