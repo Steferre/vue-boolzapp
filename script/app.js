@@ -54,12 +54,10 @@ const app = new Vue({
             return this.timer = setTimeout(this.createNewAnswer, 1000);
         },
         searchSpecificUser() {
-            return this.userList.filter((searchedUser) => searchedUser.name.toLowerCase().includes(this.specificUser));
+            return this.userList.filter((searchedUser) => searchedUser.name.toLowerCase().includes(this.specificUser.toLowerCase()));
         },
     },
     mounted() {
         this.activeUser = this.userList[0]
     }
-
-
 })
