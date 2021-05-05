@@ -5,7 +5,6 @@
 }
 
 .mainContainer {
-    background-color: lightgreen;
     width: 100%;
     height: 100vh;
 }
@@ -13,7 +12,7 @@
 .layoutContainer {
     display: flex;
     margin: auto;
-    width: 95%;
+    width: 100%;
     height: 100vh;
 }
 
@@ -31,7 +30,6 @@
     padding: 5px 5px 5px 35px;
     border: none;  
 }
-
 
 /* ZONA LISTA MESSAGGI*/
 .users {
@@ -59,8 +57,8 @@
 }
 
 .userToolbar i {
-    font-size: 15px;
-    padding: 0 10px;
+    font-size: 20px;
+    padding: 0 15px;
     color: #808080;
 }
 
@@ -103,7 +101,6 @@
 .search {
     display: flex;
     position: relative;
-    width: 100%;
     padding: 10px;
 }
 
@@ -128,8 +125,12 @@
     border-bottom: 1px solid lightgray;
 }
 
+.singleUser:hover {
+    background-color: rgb(241, 241, 241);
+}
+
 .singleUser.active {
-    background-color: darkgray;
+    background-color: rgb(196, 196, 196);
 }
 
 .userImg_box {
@@ -178,9 +179,9 @@
 }
 
 .newMex i {
-    font-size: 20px;
+    font-size: 25px;
     color: #808080;
-    padding: 5px 15px;
+    padding: 5px 12px;
 }
 
 .messageContainer {
@@ -236,6 +237,19 @@
     width: 35px;
     padding: 5px;
     color: #808080; 
+}
+
+.iconToListOption {
+    position: absolute;
+    top: -5px;
+    right: 10px;
+    color: gray;
+    font-size: 25px;
+    display: none;
+}
+
+.msg:hover .iconToListOption {
+    display: inline-block;
 }
 
 .writeMessage {

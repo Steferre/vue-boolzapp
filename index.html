@@ -44,11 +44,11 @@
                         <div class="singleUser" v-for="(user, index) in searchSpecificUser()" :key="index" @click="getActiveUser(user)"
                             :class="{active: user.avatar === activeUser.avatar}">
                             <div class="userImg_box">
-                                <img :src="getUserImgPath(user)" alt="" class="userIcon">
+                                <img :src="getUserImgPath(user)" alt="user image" class="userIcon">
                             </div>
                             <div class="userText_box">
                                 <p><strong>{{ user.name }}</strong></p>
-                                <p>Non ci sono nuovi messaggi!</p>
+                                <p>Non ci sono messaggi!</p>
                             </div>
                         </div>
                     </div>
@@ -62,7 +62,6 @@
                                 <p><small>Ultimo accesso alle {{ getActiveUserLastAccess }}</small></p>
                             </div>
                             <i class="fa fa-search"></i>
-                            <i class="fa fa-paperclip"></i>
                             <i class="fa fa-ellipsis-v"></i>
                         </div>         
                     </div>
@@ -77,14 +76,17 @@
                                              white: message.status === 'received'
                                             }">
                                 </div>
+                                <i class="fa fa-angle-down iconToListOption"></i>
                                 <div class="hours">{{ getFormatDate(message.date) }}</div>
                             </div>
                         </div>
                     </div>
                     <div class="newMex">
                         <i class="fa fa-smile-o"></i>
+                        <i class="fa fa-paperclip"></i>
                         <input type="text" placeholder="Scrivi un messaggio" class="writeMessage" v-model="userNewMsg" @keyup.enter="createNewMsg(), autoAnswer()">
-                        <i class="fa fa-microphone"></i>
+                        <i class="fa fa-microphone" v-if="userNewMsg === ''"></i>
+                        <i class="fa fa-paper-plane" v-else="userNewMsg !== ''" @click="createNewMsg(), autoAnswer()"></i>
                     </div>
                 </div>
             </div>
