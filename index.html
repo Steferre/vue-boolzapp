@@ -65,7 +65,7 @@
                             <i class="fa fa-ellipsis-v"></i>
                         </div>         
                     </div>
-                    <div class="chatSpace">
+                    <div class="chatSpace" ref="chatContainerToScroll">
                         <div class="messageContainer">
                             <div class="msg" v-for="(message, index) in activeUser.messages" :key="index"
                             :class="{received: message.status === 'received',
@@ -76,7 +76,11 @@
                                              white: message.status === 'received'
                                             }">
                                 </div>
-                                <i class="fa fa-angle-down iconToListOption"></i>
+                                <i class="fa fa-angle-down iconToListOption" @click="popupActivated(index)"></i>
+                                <div class="popup" v-if="message.activePopup">
+                                    <p>Message info</p>
+                                    <p @click="deleteMessage(index)">Delete message</p>
+                                </div>
                                 <div class="hours">{{ getFormatDate(message.date) }}</div>
                             </div>
                         </div>
@@ -84,9 +88,9 @@
                     <div class="newMex">
                         <i class="fa fa-smile-o"></i>
                         <i class="fa fa-paperclip"></i>
-                        <input type="text" placeholder="Scrivi un messaggio" class="writeMessage" v-model="userNewMsg" @keyup.enter="createNewMsg(), autoAnswer()">
+                        <input type="text" placeholder="Scrivi un messaggio" class="writeMessage" v-model="userNewMsg" @keyup.enter="createNewConversation()">
                         <i class="fa fa-microphone" v-if="userNewMsg === ''"></i>
-                        <i class="fa fa-paper-plane" v-else="userNewMsg !== ''" @click="createNewMsg(), autoAnswer()"></i>
+                        <i class="fa fa-paper-plane" v-else="userNewMsg !== ''"  @click="createNewConversation()"></i>
                     </div>
                 </div>
             </div>

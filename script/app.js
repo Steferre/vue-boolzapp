@@ -5,7 +5,7 @@ const app = new Vue({
         activeUser: {},
         userNewMsg: "",
         timer: null,
-        specificUser: "",
+        specificUser: ""
     },
     computed: {
         getActiveUserLastAccess() {
@@ -15,7 +15,15 @@ const app = new Vue({
 
             let onlyReceivedMex = this.activeUser.messages.filter((msg) => msg.status === 'received');
 
+            if(onlyReceivedMex.length === 0){
+                return "";
+            }
+
             let lastMexDate = onlyReceivedMex[onlyReceivedMex.length - 1].date;
+
+            if(!lastMexDate) {
+                return "";
+            }
 
             return this.getFormatDate(lastMexDate);
         },
@@ -30,34 +38,59 @@ const app = new Vue({
         getFormatDate(date) {
             return moment(date, "DD-MM-YYYY HH:mm:ss").format("HH:mm");
         },
-        createNewMsg() {
-            let newMessagesList = this.activeUser.messages.push({
-                date: moment(),
+        createNewConversation() {
+            let newMessage = {
+                date: moment().format("DD-MM-YYYY HH:mm:ss"),
                 text: this.userNewMsg,
-                status: 'sent'
-            });
- 
-             this.userNewMsg = "";
- 
-             return newMessagesList;
-        },
-        createNewAnswer() {
-            let newMessagesList = this.activeUser.messages.push({
-                date: moment(),
-                text: 'Ok!',
-                status: 'received'
-            });
+                status: 'sent',
+                activePopup: false
+            };
 
-             return newMessagesList;
-        },
-        autoAnswer() {
-            return this.timer = setTimeout(this.createNewAnswer, 1000);
+            const currentUser = this.activeUser;
+
+            currentUser.messages.push(newMessage);
+ 
+            this.userNewMsg = "";
+
+            this.scrollToBottom();
+
+            setTimeout(() => {
+                let newAnswer = {
+                    date: moment().format("DD-MM-YYYY HH:mm:ss"),
+                    text: "Ok",
+                    status: 'received',
+                    activePopup: false   
+                };
+
+                currentUser.messages.push(newAnswer);
+
+                this.scrollToBottom();
+            }, 1000);
         },
         searchSpecificUser() {
             return this.userList.filter((searchedUser) => searchedUser.name.toLowerCase().includes(this.specificUser.toLowerCase()));
         },
+        scrollToBottom() {
+            this.$nextTick(() => {
+                const htmlElement = this.$refs.chatContainerToScroll
+
+                htmlElement.scrollTop = htmlElement.scrollHeight
+            });
+        },
+        popupActivated(index) {
+         
+            const selectedMsg = this.activeUser.messages[index];
+
+            selectedMsg.activePopup = !selectedMsg.activePopup;
+           
+        },
+        deleteMessage(index) {
+            let currentChatMessages = this.activeUser.messages;
+
+            currentChatMessages.splice(index, 1);
+        }
     },
     mounted() {
-        this.activeUser = this.userList[0]
+        this.activeUser = this.userList[0];
     }
 })
