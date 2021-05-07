@@ -43,12 +43,15 @@
                     <div class="chatPrev">
                         <div class="singleUser" v-for="(user, index) in searchSpecificUser()" :key="index" @click="getActiveUser(user)"
                             :class="{active: user.avatar === activeUser.avatar}">
+                            <div class="lastMsgHour">
+                                {{ getLastAccessHour(index) }}
+                            </div>
                             <div class="userImg_box">
                                 <img :src="getUserImgPath(user)" alt="user image" class="userIcon">
                             </div>
                             <div class="userText_box">
                                 <p><strong>{{ user.name }}</strong></p>
-                                <p>Non ci sono messaggi!</p>
+                                <p>{{ getLastMessage(index) }}</p>
                             </div>
                         </div>
                     </div>
@@ -68,7 +71,7 @@
                     <div class="chatSpace" ref="chatContainerToScroll">
                         <div class="messageContainer">
                             <div class="msg" v-for="(message, index) in activeUser.messages" :key="index"
-                            :class="{received: message.status === 'received',
+                                :class="{received: message.status === 'received',
                                     sent: message.status === 'sent'}">
                                 {{ message.text }}
                                 <div class="triangle"

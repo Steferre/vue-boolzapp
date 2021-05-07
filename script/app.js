@@ -88,6 +88,28 @@ const app = new Vue({
             let currentChatMessages = this.activeUser.messages;
 
             currentChatMessages.splice(index, 1);
+        },
+        getLastMessage(index) {
+            const singleUserMsgList = this.userList[index].messages;
+
+            if(singleUserMsgList.length === 0) {
+                return "Non ci sono messaggi"
+            }
+
+            const lastMsg = singleUserMsgList[singleUserMsgList.length - 1];
+
+            return lastMsg.text;
+        },
+        getLastAccessHour(index) {
+            const singleUserMsgList = this.userList[index].messages;
+            if(singleUserMsgList.length === 0) {
+                return ""
+            }
+
+            const lastMsgHour = singleUserMsgList[singleUserMsgList.length - 1];
+
+            return this.getFormatDate(lastMsgHour.date);
+
         }
     },
     mounted() {

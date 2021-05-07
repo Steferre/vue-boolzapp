@@ -120,6 +120,7 @@
 }
 
 .singleUser {
+    position: relative;
     display: flex;
     align-items: center;
     padding: 10px;
@@ -143,10 +144,22 @@
 .userText_box {
     display: flex;
     flex-direction: column;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .userText_box p {
     padding: 2px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.lastMsgHour {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    font-size: 14px;
 }
 
 /* ZONA CHAT APERTA*/
