@@ -90,7 +90,7 @@ const app = new Vue({
             currentChatMessages.splice(index, 1);
         },
         getLastMessage(index) {
-            const singleUserMsgList = this.userList[index].messages;
+            const singleUserMsgList = this.searchSpecificUser()[index].messages;
 
             if(singleUserMsgList.length === 0) {
                 return "Non ci sono messaggi"
@@ -101,7 +101,7 @@ const app = new Vue({
             return lastMsg.text;
         },
         getLastAccessHour(index) {
-            const singleUserMsgList = this.userList[index].messages;
+            const singleUserMsgList = this.searchSpecificUser()[index].messages;
             if(singleUserMsgList.length === 0) {
                 return ""
             }

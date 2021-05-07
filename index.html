@@ -62,7 +62,7 @@
                             <img :src="getUserImgPath(activeUser)">
                             <div class="emptySpace">
                                 <p><strong>{{ activeUser.name }}</strong></p>
-                                <p><small>Ultimo accesso alle {{ getActiveUserLastAccess }}</small></p>
+                                <p v-if="getActiveUserLastAccess"><small>Ultimo accesso alle {{ getActiveUserLastAccess }}</small></p>
                             </div>
                             <i class="fa fa-search"></i>
                             <i class="fa fa-ellipsis-v"></i>
